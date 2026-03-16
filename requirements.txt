@@ -1,0 +1,13 @@
+torch==2.7.1
+torchvision
+torchaudio
+mediapipe==0.10.7
+opencv-python-headless
+streamlit==1.55.0
+pytorch-lightning==2.6.1
+torchmetrics
+numpy
+pandas
+scikit-learn
+gtts
+einops
