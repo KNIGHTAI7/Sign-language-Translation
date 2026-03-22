@@ -21,9 +21,19 @@ st.set_page_config(
 )
 
 # ── MediaPipe ─────────────────────────────────────────────────
-mp_holistic = mp.solutions.holistic
-mp_drawing  = mp.solutions.drawing_utils
-mp_styles   = mp.solutions.drawing_styles
+try:
+    mp_holistic = mp.solutions.holistic
+    mp_drawing  = mp.solutions.drawing_utils
+    mp_styles   = mp.solutions.drawing_styles
+except AttributeError:
+    from mediapipe.python.solutions import holistic as mp_holistic_mod
+    from mediapipe.python.solutions import drawing_utils as mp_drawing
+    from mediapipe.python.solutions import drawing_styles as mp_styles
+    class mp_holistic:
+        Holistic       = mp_holistic_mod.Holistic
+        POSE_CONNECTIONS  = mp_holistic_mod.POSE_CONNECTIONS
+        HAND_CONNECTIONS  = mp_holistic_mod.HAND_CONNECTIONS
+        FACEMESH_CONTOURS = mp_holistic_mod.FACEMESH_CONTOURS
 
 MODEL_PATH = "models/sign_language_lstm.pth"
 MAX_FRAMES = 30
