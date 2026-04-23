@@ -8,6 +8,16 @@ import sys
 import time
 from gtts import gTTS
 import mediapipe as mp
+from mediapipe.solutions.holistic import Holistic as _Holistic
+from mediapipe.solutions.holistic import POSE_CONNECTIONS as _POSE_CONNECTIONS
+from mediapipe.solutions.holistic import HAND_CONNECTIONS as _HAND_CONNECTIONS
+from mediapipe.solutions import drawing_utils as mp_drawing
+from mediapipe.solutions import drawing_styles as mp_styles
+
+class mp_holistic:
+    Holistic         = _Holistic
+    POSE_CONNECTIONS = _POSE_CONNECTIONS
+    HAND_CONNECTIONS = _HAND_CONNECTIONS
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
 from models.lstm_model import SignLanguageLSTM
@@ -21,9 +31,7 @@ st.set_page_config(
 )
 
 # ── MediaPipe ─────────────────────────────────────────────────
-mp_holistic = mp.solutions.holistic
-mp_drawing  = mp.solutions.drawing_utils
-mp_styles   = mp.solutions.drawing_styles
+
 
 MODEL_PATH = "models/sign_language_lstm.pth"
 MAX_FRAMES = 30
