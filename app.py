@@ -8,12 +8,15 @@ import sys
 import time
 from gtts import gTTS
 import mediapipe as mp
-from mediapipe.solutions.holistic import Holistic as _Holistic
-from mediapipe.solutions.holistic import POSE_CONNECTIONS as _POSE_CONNECTIONS
-from mediapipe.solutions.holistic import HAND_CONNECTIONS as _HAND_CONNECTIONS
-from mediapipe.solutions import drawing_utils as mp_drawing
-from mediapipe.solutions import drawing_styles as mp_styles
 
+# 1. Define these at the top level (not inside the class)
+_Holistic = mp.solutions.holistic.Holistic
+_POSE_CONNECTIONS = mp.solutions.holistic.POSE_CONNECTIONS
+_HAND_CONNECTIONS = mp.solutions.holistic.HAND_CONNECTIONS
+mp_drawing = mp.solutions.drawing_utils
+mp_styles = mp.solutions.drawing_styles
+
+# 2. Now your class uses those variables
 class mp_holistic:
     Holistic         = _Holistic
     POSE_CONNECTIONS = _POSE_CONNECTIONS
