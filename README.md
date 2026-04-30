@@ -17,7 +17,7 @@
 
 <br/>
 
-![NeuroGestures Demo](https://via.placeholder.com/900x400/0f0c29/667eea?text=NeuroGestures+%7C+ASL+Translator)
+
 
 </div>
 
@@ -83,36 +83,36 @@ NeuroGestures uses a multi-stage pipeline:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    NeuroGestures Pipeline                    │
+│                    NeuroGestures Pipeline                   │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
 │  Video / Webcam                                             │
 │       │                                                     │
 │       ▼                                                     │
 │  MediaPipe Holistic                                         │
-│  → Pose (33 landmarks) + Hands (21 × 2 landmarks)          │
+│  → Pose (33 landmarks) + Hands (21 × 2 landmarks)           │
 │       │                                                     │
 │       ▼                                                     │
-│  Signer-Invariant Feature Engineering (243 features/frame) │
-│  → Normalize by shoulder width & hip midpoint              │
-│  → Hand keypoints relative to wrist                        │
-│  → Finger joint angle unit vectors                         │
+│  Signer-Invariant Feature Engineering (243 features/frame)  │
+│  → Normalize by shoulder width & hip midpoint               │
+│  → Hand keypoints relative to wrist                         │
+│  → Finger joint angle unit vectors                          │ 
 │       │                                                     │
 │       ▼                                                     │
-│  Velocity Features (frame-to-frame motion)                 │
-│  → Concatenated → 486 features/frame                       │
+│  Velocity Features (frame-to-frame motion)                  │
+│  → Concatenated → 486 features/frame                        │
 │       │                                                     │
 │       ▼                                                     │
-│  Transformer Encoder (4 layers, 4 heads, d_model=256)      │
-│  → Positional Encoding + CLS Token                         │
-│  → Multi-Head Self-Attention × 4                           │
-│  → Classification Head                                     │
+│  Transformer Encoder (4 layers, 4 heads, d_model=256)       │
+│  → Positional Encoding + CLS Token                          │
+│  → Multi-Head Self-Attention × 4                            │
+│  → Classification Head                                      │
 │       │                                                     │
 │       ▼                                                     │
-│  Top-5 Predictions + TTA (8 passes)                        │
+│  Top-5 Predictions + TTA (8 passes)                         │
 │       │                                                     │
 │       ▼                                                     │
-│  Text-to-Speech (gTTS)                                     │
+│  Text-to-Speech (gTTS)                                      │
 │                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
